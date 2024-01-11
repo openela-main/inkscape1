@@ -1,0 +1,35 @@
+From 429bd2860bf372448cdafdfe04e95a2f4329c3f6 Mon Sep 17 00:00:00 2001
+From: Vitaly Lipatov <lav@etersoft.ru>
+Date: Sun, 8 Nov 2020 02:53:18 +0300
+Subject: [PATCH] CMakeLists.txt: move GNUInstallDirs after project(NAME) to
+ fix warning
+
+  Unable to determine default CMAKE_INSTALL_LIBDIR directory because no
+  target architecture is known.  Please enable at least one language before
+  including GNUInstallDirs.
+
+Signed-off-by: Vitaly Lipatov <lav@etersoft.ru>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 93ab430549..e31038c086 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -30,11 +30,11 @@ set(CMAKE_BUILD_TYPE_INIT "Release")
+ 
+ include(CMakeScripts/HelperFunctions.cmake)
+ include(CMakeScripts/ConfigEnv.cmake)
+-include(GNUInstallDirs) # for the CMAKE_INSTALL_LIBDIR variable
+ 
+ project(inkscape)
+ set(CMAKE_INSTALL_DEFAULT_COMPONENT_NAME inkscape) # needs to be before any install() commands
+ 
++include(GNUInstallDirs) # for the CMAKE_INSTALL_LIBDIR variable
+ include(CMakeScripts/ConfigPaths.cmake)
+ 
+ set(PROJECT_NAME inkscape)
+-- 
+GitLab
+
