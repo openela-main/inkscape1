@@ -6,16 +6,9 @@
 %global __provides_exclude ^(%{_privatelibs})$
 %global __requires_exclude ^(%{_privatelibs})$
 
-# Only on 8.8.0.z and ppc64le the compilation of Inkscape fails on some race
-# condition when compiling the translations. Turn off the parallel compilation
-# on ppc64le to fix the build.
-%ifarch ppc64le
-%global _smp_mflags -j1
-%endif
-
 Name:           inkscape1
 Version:        1.0.2
-Release:        2%{?dist}.1
+Release:        3%{?dist}
 Summary:        Vector-based drawing program using SVG
 
 License:        GPLv2+ and CC-BY
@@ -339,9 +332,9 @@ desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/org.inkscape.Inksc
 
 
 %changelog
-* Thu May 25 2023 Kyle Walker <kwalker@redhat.com> - 1.0.2-2.1
+* Thu May 25 2023 Kyle Walker <kwalker@redhat.com> - 1.0.2-3
 - Remove the Provides RPM tags
-- Resolves: rhbz#2210023
+- Resolves: rhbz#2209988
 
 * Thu Oct 20 2022 Tomas Popela <tpopela@redhat.com> - 1.0.2-2
 - Fix the rpath by backporting an upstream patch
